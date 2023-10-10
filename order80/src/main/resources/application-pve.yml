@@ -7,4 +7,3 @@ spring:
     url: jdbc:mysql://192.168.3.112:13306/mall-paymentdb?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowMultiQueries=true
     username: root
     password: zjy123456
-
