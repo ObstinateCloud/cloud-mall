@@ -1,7 +1,7 @@
 package com.legendyun.payment.controller;
 
-import com.legendyun.payment.entities.CommonResult;
-import com.legendyun.payment.entities.Payment;
+import com.legendyun.common.entities.CommonResult;
+import com.legendyun.common.entities.Payment;
 import com.legendyun.payment.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping(value = "create")
-    public CommonResult createPayment(Payment payment){
+    public CommonResult<Payment> createPayment(@RequestBody Payment payment){  //此处不加RequestBody，跨项目调用无法接受参数
         int result = paymentService.createPayment(payment);
         log.info(" insert success");
         if (result>0){
@@ -33,7 +33,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "get/{id}")
-    public CommonResult getPaymentById(@PathVariable("id") Long id){
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id){
         Payment payment = paymentService.getPaymentById(id);
         log.info("123");
         if(payment!=null){

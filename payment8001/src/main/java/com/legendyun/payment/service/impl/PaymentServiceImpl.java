@@ -1,7 +1,7 @@
 package com.legendyun.payment.service.impl;
 
+import com.legendyun.common.entities.Payment;
 import com.legendyun.payment.dao.PaymentDao;
-import com.legendyun.payment.entities.Payment;
 import com.legendyun.payment.service.PaymentService;
 import org.springframework.stereotype.Service;
 

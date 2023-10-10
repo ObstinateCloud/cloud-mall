@@ -11,6 +11,7 @@
     <modules>
         <module>payment8001</module>
         <module>order8101</module>
+        <module>api-common</module>
     </modules>
 
     <name>legendyun-mall</name>

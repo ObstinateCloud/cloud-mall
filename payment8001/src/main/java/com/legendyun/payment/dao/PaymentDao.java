@@ -1,6 +1,6 @@
 package com.legendyun.payment.dao;
 
-import com.legendyun.payment.entities.Payment;
+import com.legendyun.common.entities.Payment;
 import org.apache.ibatis.annotations.Mapper;
 
 import javax.websocket.server.PathParam;

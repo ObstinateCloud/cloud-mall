@@ -1,4 +1,4 @@
-package com.legendyun.order.entities;
+package com.legendyun.common.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

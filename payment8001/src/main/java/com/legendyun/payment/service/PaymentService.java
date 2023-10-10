@@ -1,6 +1,7 @@
 package com.legendyun.payment.service;
 
-import com.legendyun.payment.entities.Payment;
+
+import com.legendyun.common.entities.Payment;
 
 /**
  * @title: PaymentService
