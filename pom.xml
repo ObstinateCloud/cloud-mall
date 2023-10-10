@@ -12,6 +12,7 @@
         <module>payment8001</module>
         <module>order8101</module>
         <module>api-common</module>
+        <module>eureka-server7001</module>
     </modules>
 
     <name>legendyun-mall</name>
