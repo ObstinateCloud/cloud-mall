@@ -1,4 +1,4 @@
-package com.legendyun.eureka;
+package com.legendyun.eureka7001;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

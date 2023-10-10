@@ -22,7 +22,8 @@ public class OrderController {
     @Resource
     private RestTemplate restTemplate;
 
-    public static final String PAYMENT_URL="http://localhost:8001";
+    public static final String PAYMENT_URL="http://payment8001";
+//    public static final String PAYMENT_URL="http://localhost:8001";  //初代版本
 
     @PostMapping("create")
     public CommonResult<Payment> createOrder(Payment payment){

@@ -1,0 +1,13 @@
+
+
+eureka:
+  instance:
+    hostname: eureka7002.com #eureka服务端实例名称 全局唯一  本地演示需要在host文件中配置映射
+  client:
+    # 表示自己是否注册到自己
+    register-with-eureka: false
+    # 表示自己是注册中心，不需要去检索服务
+    fetch-registry: false
+    service-url:
+      # 设置与eureka server交互的地址 查询服务和注册服务都需要依赖这个地址  集群模式需要注册到另一台
+      defaultZone: http://eureka7001.com:7001/eureka/
