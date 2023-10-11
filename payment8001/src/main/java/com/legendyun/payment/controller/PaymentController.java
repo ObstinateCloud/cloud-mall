@@ -5,9 +5,12 @@ import com.legendyun.common.entities.Payment;
 import com.legendyun.payment.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @title: PaymentController
@@ -24,6 +27,10 @@ public class PaymentController {
 
     @Value("${server.port}")
     private Integer serverPort;
+
+    //服务发现配置
+    @Resource
+    private DiscoveryClient discoveryClient;
 
   @PostMapping(value = "create")
     public CommonResult<Payment> createPayment(@RequestBody Payment payment){  //此处不加RequestBody，跨项目调用无法接受参数
@@ -47,6 +54,25 @@ public class PaymentController {
             return new CommonResult(201,"not found");
         }
 
+
+    }
+
+    /**
+     * 获取注册的服务信息
+     * @return
+     */
+    @GetMapping("discovery")
+    public Object discovery(){
+        List<String> services = discoveryClient.getServices();
+        services.forEach(p->{
+            log.info("element:"+p);
+        });
+
+        List<ServiceInstance> payment8001 = discoveryClient.getInstances("payment8001");
+        payment8001.forEach(p->{
+            log.info(p.getServiceId()+" "+p.getHost()+" "+ p.getUri()+" "+p.getPort());
+        });
+        return discoveryClient;
 
     }
 }

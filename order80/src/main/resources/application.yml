@@ -20,5 +20,5 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
   instance:
-    instance-id: payment8001  # 用于指定实例名称，防止暴漏主机名称
+    instance-id: order80  # 用于指定实例名称，防止暴漏主机名称
     prefer-ip-address: true  # 服务名称访问路径增加ip显示
