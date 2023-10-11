@@ -1,7 +1,7 @@
 
 spring:
   profiles:
-    active: cluster1
+    active: single
 
 server:
   port: 7001
