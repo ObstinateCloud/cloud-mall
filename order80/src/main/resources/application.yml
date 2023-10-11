@@ -19,3 +19,6 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka  #集群
     fetch-registry: true
     register-with-eureka: true
+  instance:
+    instance-id: payment8001  # 用于指定实例名称，防止暴漏主机名称
+    prefer-ip-address: true  # 服务名称访问路径增加ip显示
