@@ -14,4 +14,4 @@ eureka:
   server:
     # 关闭自我保护机制
     enable-self-preservation: false
-    eviction-interval-timer-in-ms: 2000 # 扫描失效服务间隔时间 默认为60*1000ms
+    eviction-interval-timer-in-ms: 5000 # 扫描失效服务间隔时间 默认为60*1000ms

@@ -87,10 +87,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.2.RELEASE</version> <!--此处的版本需要与springboot的版本一致否则会出现无法打包的问题-->
                 <configuration>
                     <includeSystemScope>true</includeSystemScope>
                     <addResources>true</addResources>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
