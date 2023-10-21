@@ -1,6 +1,6 @@
 spring:
-  profiles:
-    active: work
+  active: pve
+    include: mysql,eureka
   application:
     name: order80
 
@@ -11,14 +11,3 @@ server:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.legendyun.common.entities
-
-eureka:
-  client:
-    service-url:
-#      defaultZone: http://localhost:7001/eureka  #单机
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka  #集群
-    fetch-registry: true
-    register-with-eureka: true
-  instance:
-    instance-id: order80  # 用于指定实例名称，防止暴漏主机名称
-    prefer-ip-address: true  # 服务名称访问路径增加ip显示
