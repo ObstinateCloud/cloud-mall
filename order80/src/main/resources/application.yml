@@ -1,6 +1,7 @@
 spring:
-  active: pve
-    include: mysql,eureka
+  profiles:
+    active: pve
+    include: mysql,zookeeper
   application:
     name: order80
 
