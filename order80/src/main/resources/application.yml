@@ -12,3 +12,8 @@ server:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.legendyun.common.entities
+
+logging:
+  level:
+    tracer: trace
+    com.legendyun.payment.dao: DEBUG
