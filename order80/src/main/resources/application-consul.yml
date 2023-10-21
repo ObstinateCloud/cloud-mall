@@ -3,7 +3,7 @@ spring:
       consul:
         discovery:
           service-name: ${spring.application.name}
-#        health-check-url: http://localhost:8001/actuator/health # 解决consul健康检测无法通过问题 2选1
         health-check-path: actuator/health # 解决consul健康检测无法通过问题 2选1
         host: ${consul.url}
         port: 8500
+        #health-check-url: http://localhost:8002/actuator/health   # 解决consul健康检测无法通过问题 2选1
