@@ -1,13 +1,13 @@
 spring:
   profiles:
-    active: pve
-    include: mysql,consul
+    active: work
+    include: mysql,eureka
   application:
     name: order80
 
 
 server:
-  port: 8002
+  port: 8010
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

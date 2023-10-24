@@ -3,6 +3,7 @@ package com.legendyun.order.controller;
 import com.legendyun.common.entities.CommonResult;
 import com.legendyun.common.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,9 +33,36 @@ public class OrderController {
         return restTemplate.postForObject(PAYMENT_URL+"/payment/create", payment, CommonResult.class);
     }
 
-    @GetMapping("get/payment/{id}")
-    public CommonResult<Payment> getOrderPayment(@PathVariable("id") Long id){
+    /**
+     * getForObject 返回值为json
+     * @param id
+     * @return
+     */
+
+    @GetMapping("get/paymentObj/{id}")
+    public CommonResult<Payment> getOrderPaymentForObj(@PathVariable("id") Long id){
         return restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id,CommonResult.class);
+    }
+
+    /**
+     * 返回值为请求对象 包含更多请求信息
+     * @param id
+     * @return
+     */
+    @GetMapping("get/paymentEntity/{id}")
+    public CommonResult<Payment> getOrderPaymentForEntity(@PathVariable("id") Long id){
+        ResponseEntity<CommonResult> resultResponseEntity = restTemplate.getForEntity(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
+        log.info(resultResponseEntity.getStatusCode().toString());
+        log.info(resultResponseEntity.getHeaders().toSingleValueMap().toString());
+        return resultResponseEntity.getBody();
+    }
+
+    @PostMapping("create/paymentEntity")
+    public CommonResult<Payment> createOrderEntity(Payment payment){
+        ResponseEntity<CommonResult> resultResponseEntity = restTemplate.postForEntity(PAYMENT_URL + "/payment/create", payment, CommonResult.class);
+        log.info(resultResponseEntity.getStatusCode().toString());
+        log.info(resultResponseEntity.getHeaders().toSingleValueMap().toString());
+        return resultResponseEntity.getBody();
     }
 
 }

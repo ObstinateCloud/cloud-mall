@@ -1,7 +1,7 @@
 spring:
   profiles:
-    active: pve
-    include: mysql,consul
+    active: work
+    include: mysql,eureka
   application:
     name: payment8001
 
