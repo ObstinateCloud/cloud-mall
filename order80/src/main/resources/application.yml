@@ -3,11 +3,12 @@ spring:
     active: work
     include: mysql,eureka
   application:
-    name: order80
+    name: order8010
 
 
 server:
   port: 8010
+
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
