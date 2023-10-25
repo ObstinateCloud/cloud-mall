@@ -21,3 +21,4 @@ logging:
   level:
     tracer: trace
     com.legendyun.payment.dao: DEBUG
+    com.legendyun.order.service.feign.PaymentFeignService: DEBUG
