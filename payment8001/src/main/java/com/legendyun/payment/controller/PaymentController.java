@@ -10,7 +10,9 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @title: PaymentController
@@ -72,5 +74,19 @@ public class PaymentController {
         });
         return discoveryClient;
 
+    }
+
+    /**
+     * 模拟超时接口
+     * @return
+     */
+    @GetMapping(value = "feign/timeout")
+    public String feignTimeOut(){
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "invoke sucess:"+new Date().toString();
     }
 }

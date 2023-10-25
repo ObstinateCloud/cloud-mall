@@ -9,6 +9,9 @@ spring:
 server:
   port: 8010
 
+ribbon:
+  ReadTimeout: 5000 # 读取资源超时时间 默认时间为1s
+  ConnectTimeout: 5000 # 建立链接超时时间
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

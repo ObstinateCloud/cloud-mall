@@ -30,4 +30,11 @@ public class OrderPaymentController {
         return paymentFeignService.getPaymentByIdFeign(id);
     }
 
+
+    @GetMapping("mockTimeout")
+    private String mockTimeout(){
+        //openfeign 默认超时时间1s
+        return paymentFeignService.feignTimeout();
+    }
+
 }
