@@ -37,10 +37,13 @@ public class PaymentHystrixController {
     }
     @GetMapping("paymentTimeout/{id}")
     @HystrixCommand(fallbackMethod = "paymentTimeoutHandler",commandProperties = {
-            @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value = "2000")
+            @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value = "2000")  //@HystrixCommand 注解的方法不能使用private修饰
     }) //超时2秒自动进入异常处理方法
     public CommonResult paymentTimeout(@PathVariable("id")Integer id){
+
             long timeStart = System.currentTimeMillis();
+            //程序运行异常可以触发降级
+            int age = 10/0;
 //        try {
 //            TimeUnit.SECONDS.sleep(3);
 //        } catch (InterruptedException e) {

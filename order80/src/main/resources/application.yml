@@ -22,3 +22,9 @@ logging:
     tracer: trace
     com.legendyun.payment.dao: DEBUG
     com.legendyun.order.service.feign.PaymentFeignService: DEBUG
+    com.legendyun.order.service.feign.PaymentFeignHystrixService: DEBUG
+
+#开启feign对hystrix的支持
+feign:
+  hystrix:
+    enabled: true
