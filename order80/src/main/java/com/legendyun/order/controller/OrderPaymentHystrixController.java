@@ -32,7 +32,7 @@ public class OrderPaymentHystrixController {
 
 
     @GetMapping(value = "paymentOkHystrix/{id}")
-    private CommonResult paymentOkHystrix(@PathVariable("id") Long id){
+    public CommonResult paymentOkHystrix(@PathVariable("id") Long id){
         return paymentFeignHystrixService.paymentOk(id);
     }
 

@@ -2,6 +2,7 @@ package com.legendyun.order.service.feign;
 
 import com.legendyun.common.entities.CommonResult;
 import com.legendyun.common.entities.Payment;
+import com.legendyun.order.service.impl.PaymentFeignHystrixServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 
 @Component
-@FeignClient(value = "payment8001/paymentHystrix/")
+@FeignClient(value = "payment8001/paymentHystrix/",fallback = PaymentFeignHystrixServiceFallback.class)
 public interface PaymentFeignHystrixService {
 
     @GetMapping(value = "paymentOk/{id}")
