@@ -2,6 +2,7 @@ package com.legendyun.payment.controller;
 
 import com.legendyun.common.entities.CommonResult;
 import com.legendyun.payment.service.PaymentService;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,13 +22,16 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("paymentHystrix")
+@DefaultProperties(defaultFallback = "defaultTimeoutHandler") //默认降级处理方法 优先级低于单独配置的方法
 public class PaymentHystrixController {
 
     @Resource
     private PaymentService paymentService;
-    @GetMapping("paymentOk/{id}")
-    private CommonResult paymentOk(@PathVariable("id")Integer id){
 
+    @GetMapping("paymentOk/{id}")
+    @HystrixCommand
+    public CommonResult paymentOk(@PathVariable("id")Integer id){
+        int a = 10/0;
         long timeStart = System.currentTimeMillis();
         System.out.println("paymentOk");
         long timeEnd = System.currentTimeMillis();
@@ -35,6 +39,8 @@ public class PaymentHystrixController {
         CommonResult commonResult = new CommonResult(200,res);
         return commonResult;
     }
+
+
     @GetMapping("paymentTimeout/{id}")
     @HystrixCommand(fallbackMethod = "paymentTimeoutHandler",commandProperties = {
             @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value = "2000")  //@HystrixCommand 注解的方法不能使用private修饰
@@ -56,5 +62,10 @@ public class PaymentHystrixController {
     public CommonResult paymentTimeoutHandler(Integer id){
         System.out.println("服务降级测试");
         return new CommonResult<>(201,"线程池:+Thread.currentThread().getName()"+"id=:"+id+",服务降级测试，调用超时了请稍后再试");
+    }
+
+    public CommonResult defaultTimeoutHandler(){  //默认降级方法不能有参数 且返回值类型要和调用默认降级方法的方法一致
+        System.out.println("服务降级测试-默认方法");
+        return new CommonResult<>(201,"线程池:+Thread.currentThread().getName()"+"服务降级测试默认方法，调用超时了请稍后再试");
     }
 }
