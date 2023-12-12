@@ -1,10 +1,13 @@
 package com.legendyun.payment;
 
+import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
 //import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
@@ -22,5 +25,14 @@ public class Payment8001 {
 
     public static void main(String[] args) {
         SpringApplication.run(Payment8001.class,args);
+    }
+
+    // 否则hystrix-dashboard 会报Unable to connect to Command Metric Stream.的异常
+    @Bean
+    public ServletRegistrationBean hystrixMetricsStreamServlet(){
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean(new HystrixMetricsStreamServlet());
+        registrationBean.addUrlMappings("/hystrix.stream");
+        registrationBean.setLoadOnStartup(1);
+        return registrationBean;
     }
 }

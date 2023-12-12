@@ -13,6 +13,8 @@
         <module>order80</module>
         <module>api-common</module>
         <module>eureka-server7001</module>
+        <module>hystrix-dashboard</module>
+        <module>hystrix-dashboard9001</module>
     </modules>
 
     <name>legendyun-mall</name>
