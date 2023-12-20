@@ -1,0 +1,20 @@
+server:
+  port: 8020
+
+spring:
+  application:
+    name: gateway8020
+  profiles:
+    active: pve
+    include: eureka
+  cloud:
+    gateway:
+      routes:
+        - id: payment_payment  #全局唯一
+          uri: http://localhost:8001   #匹配后转发的地址
+          predicates:
+            - Path=/payment/**
+        - id: payment_paymentHystrix  #全局唯一
+          uri: http://localhost:8001
+          predicates:
+            - Path=/paymentHystrix/**
