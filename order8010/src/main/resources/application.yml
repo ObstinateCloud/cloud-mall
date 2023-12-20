@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: work
+    active: pve
     include: mysql,eureka
   application:
     name: order8010

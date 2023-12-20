@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 //import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
@@ -24,9 +23,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 //@RibbonClients //全局生效 不同服务自定策略需要比较麻烦
 @EnableFeignClients
 @EnableHystrix
-public class Order80 {
+public class Order8010 {
 
     public static void main(String[] args) {
-        SpringApplication.run(Order80.class,args);
+        SpringApplication.run(Order8010.class,args);
     }
 }
