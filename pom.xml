@@ -15,6 +15,7 @@
         <module>eureka-server7001</module>
         <module>hystrix-dashboard9001</module>
         <module>gateway8020</module>
+        <module>config-center7005</module>
     </modules>
 
     <name>legendyun-mall</name>

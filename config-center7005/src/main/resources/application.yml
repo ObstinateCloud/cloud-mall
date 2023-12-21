@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-center7005
+  profiles:
+    include: eureka
+    active: pve
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://192.168.3.105:8929/zhangjianyun/spring-cloud-config.git
+          username: zhangjianyun
+          password: zjy12345
+          search-paths: config-server # git仓库下级默认路径
+      label: main
+      #读取地址 uri+label+applicationName+"-”+profile+.yml  优先匹配分支 然后profile 然后 applicationname  当存在 aa-dev.yml 和bb-dev.yml时会 名字为cc时，先取到哪个就返回哪个
+server:
+  port: 7005
+
+
