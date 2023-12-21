@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: config-client7006
+  profiles:
+    include: eureka
+    active: pve
+
+server:
+  port: 7006
+
+

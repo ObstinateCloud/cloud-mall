@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      label: main
+      #读取地址 uri+label+applicationName+"-”+profile+.yml  优先匹配分支 然后profile 然后 applicationname  当存在 aa-dev.yml 和bb-dev.yml时会 名字为cc时，先取到哪个就返回哪个
+      name: config-client7006
+      profile: pve
+      uri: http://localhost:7005  #config server地址
+
+

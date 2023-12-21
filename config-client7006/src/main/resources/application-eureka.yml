@@ -1,0 +1,11 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eureka-server.defaultZone}
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: config-client7006  # 用于指定实例名称，防止暴漏主机名称 多服务启动时这个ID不能重复
+    prefer-ip-address: true  # 服务名称访问路径增加ip显示
+    lease-renewal-interval-in-seconds: 3 # 客户端向服务端发送心跳时间 默认30s
+    lease-expiration-duration-in-seconds: 9 # eureka收到最后一次心跳后等待时间上限 默认90
