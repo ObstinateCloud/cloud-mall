@@ -6,7 +6,7 @@ spring:
     name: gateway8020
   profiles:
     active: work
-    include: eureka
+#    include: eureka
   #  gateway配置第二版
   cloud:
     gateway:
@@ -22,8 +22,6 @@ spring:
             - Cookie=username,zjy  #多组cookie
             - Cookie=pwd,123
             - Method=GET,POST
-          filter:
-            -
         - id: payment_paymentHystrix  #全局唯一
           uri: lb://payment8001  #微服务名称
           predicates:

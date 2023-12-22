@@ -4,6 +4,7 @@ import com.legendyun.myribbon.MyRibbonRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -23,6 +24,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 //@RibbonClients //全局生效 不同服务自定策略需要比较麻烦
 @EnableFeignClients
 @EnableHystrix
+@RefreshScope
 public class Order8010 {
 
     public static void main(String[] args) {

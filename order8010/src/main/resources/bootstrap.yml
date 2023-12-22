@@ -1,0 +1,19 @@
+server:
+  port: 8010 # 通过nacos配置文件修改后 只会在启动时候生效 后续更改不生效
+
+spring:
+  application:
+    name: order8010 # 通过nacos配置文件修改后 只会在启动时候生效 后续更改不生效
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.3.111:8848
+        file-extension: yaml
+        namespace: 62396f7a-7489-4114-b04f-95eb3040e810  #namespace 只能用id
+        group: ORDER
+#        ext-config:
+#        refreshable-dataids:
+#        shared-dataids: common-mysql.yaml
+      discovery:
+        server-addr: 192.168.3.111:8848
+        namespace: 62396f7a-7489-4114-b04f-95eb3040e810  #namespace 只能用id
