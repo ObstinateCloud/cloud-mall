@@ -8,13 +8,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
+@RefreshScope //只能加在bean上否则无法自动刷新
 public class NacosConfigController {
 
-    @Value("${zjyinfo}")
-    private String info;
+    @Value("${mainInfo}")
+    private String mainInfo;
+
+    @Value("${extInfo}")
+    private String extInfo;
+
+    @Value("${shareInfo}")
+    private String shareInfo;
 
     @GetMapping("getNacosInfo")
     public String getZjyInfo(){
-        return info;
+        return "main:"+mainInfo+",share:"+shareInfo+",ext:"+extInfo;
     }
+
+
 }
