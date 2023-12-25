@@ -40,3 +40,8 @@ spring:
 #          predicates:
 #            - Path=/paymentHystrix/**
 
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: '*'

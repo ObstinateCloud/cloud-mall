@@ -5,6 +5,11 @@ spring:
   application:
     name: order8010 # 通过nacos配置文件修改后 只会在启动时候生效 后续更改不生效
   cloud:
+    sentinel:
+      transport:
+        dashboard: 192.168.3.111:8858
+        port: 8720
+        client-ip: 192.168.3.106
     nacos:
       config:
         server-addr: 192.168.3.111:8848
@@ -20,3 +25,9 @@ spring:
       discovery:
         server-addr: 192.168.3.111:8848
         namespace: 62396f7a-7489-4114-b04f-95eb3040e810  #namespace 只能用id
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: '*'

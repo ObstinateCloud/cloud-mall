@@ -16,3 +16,8 @@ logging:
     tracer: trace
     com.legendyun.payment.dao: DEBUG
 
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: '*'
