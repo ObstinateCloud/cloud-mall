@@ -22,12 +22,12 @@ public class MyLogGolbalFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         System.out.println("------coming MyLogGolbalFilter----"+new Date());
-        String uname = exchange.getRequest().getQueryParams().getFirst("uname");
-        if (uname ==null){
-            System.out.println("-----用户名为空---");
-            exchange.getResponse().setStatusCode(HttpStatus.BAD_REQUEST);
-            return exchange.getResponse().setComplete();
-        }
+//        String uname = exchange.getRequest().getQueryParams().getFirst("uname");
+//        if (uname ==null){
+//            System.out.println("-----用户名为空---");
+//            exchange.getResponse().setStatusCode(HttpStatus.BAD_REQUEST);
+//            return exchange.getResponse().setComplete();
+//        }
         return chain.filter(exchange);
     }
 
