@@ -7,9 +7,9 @@ spring:
   cloud:
     sentinel:
       transport:
-        dashboard: 192.168.3.111:8858
+        dashboard: localhost:8080
         port: 8719
-        client-ip: 192.168.3.106
+#        client-ip: 192.168.3.106
     nacos:
       config:
         server-addr: 192.168.3.111:8848
