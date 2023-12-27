@@ -20,11 +20,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 //@EnableEurekaClient
 @EnableDiscoveryClient
-@RibbonClient(name = "payment8001",configuration = MyRibbonRule.class) //payment8001要调用的服务名称
+//@RibbonClient(name = "payment8001",configuration = MyRibbonRule.class) //payment8001要调用的服务名称
 //@RibbonClients //全局生效 不同服务自定策略需要比较麻烦
 @EnableFeignClients
-@EnableHystrix
-@RefreshScope
+//@EnableHystrix
 public class Order8010 {
 
     public static void main(String[] args) {

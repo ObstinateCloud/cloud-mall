@@ -1,14 +1,14 @@
 server:
-  port: 8001 # 通过nacos配置文件修改后 只会在启动时候生效 后续更改不生效
+  port: 8030 # 通过nacos配置文件修改后 只会在启动时候生效 后续更改不生效
 
 spring:
   application:
-    name: payment8001 # 通过nacos配置文件修改后 只会在启动时候生效 后续更改不生效
+    name: storage8030 # 通过nacos配置文件修改后 只会在启动时候生效 后续更改不生效
   cloud:
     sentinel:
       transport:
         dashboard: 192.168.3.111:8858
-        port: 8719
+        port: 8722
         client-ip: 192.168.3.106
     nacos:
       config:

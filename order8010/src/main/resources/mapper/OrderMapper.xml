@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.legendyun.order.dao.OrderDao">
+
+    <insert id="insertOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_order(user_id,product_id,count,money,status) value (#{userId},#{productId},#{count},#{money},#{status})
+    </insert>
+    
+    <update id="updateOrderStatus" parameterType="long" >
+        UPDATE t_order SET status = 1 WHERE id = #{id}
+    </update>
+    
+    <select id="getOrderById" parameterType="long" resultType="Order">
+        SELECT * FROM t_order WHERE id = #{id}
+    </select>
+</mapper>

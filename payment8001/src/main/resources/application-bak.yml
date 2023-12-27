@@ -10,7 +10,9 @@ server:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.legendyun.payment.entities
+  type-aliases-package: com.legendyun.payment.entities  # mapping中自动省略自定义实体 的全路径
+  configuration:
+    map-underscore-to-camel-case: true
 logging:
   level:
     tracer: trace

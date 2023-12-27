@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 //@EnableEurekaClient  //eureka 专用
 @EnableDiscoveryClient //eureka zookeeper consoul nacoe通用服务注册发现
-@EnableCircuitBreaker //开启服务降级
+//@EnableCircuitBreaker //开启服务降级
 public class Payment8001 {
 
     public static void main(String[] args) {

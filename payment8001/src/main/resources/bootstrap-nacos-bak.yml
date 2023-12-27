@@ -10,12 +10,27 @@ spring:
         dashboard: 192.168.3.111:8858
         port: 8719
         client-ip: 192.168.3.106
+      datasource:     ### 持久化规则可通过浏览器查看示例
+        ds1:
+          nacos:
+            server-addr: 192.168.3.111:8848
+            namespace: 62396f7a-7489-4114-b04f-95eb3040e810
+            data-id: payment8001-sentinel
+            group-id: GATEWAY
+            data-type: json
+            rule-type: flow
     nacos:
       config:
         server-addr: 192.168.3.111:8848
         file-extension: yaml
         namespace: 62396f7a-7489-4114-b04f-95eb3040e810  #namespace 只能用id
-        group: SEATA
+        group: GATEWAY
+        shared-dataids: mysql-db.yaml # shared-dataids 下的配置文件的group只能是DEFAULT_GROUP 别的不支持
+        refreshable-dataids: mysql-db.yaml
+#        ext-config:
+#          - data-id: ext1.yaml
+#            group: GATEWAY
+#            refresh: true
       discovery:
         server-addr: 192.168.3.111:8848
         namespace: 62396f7a-7489-4114-b04f-95eb3040e810  #namespace 只能用id
