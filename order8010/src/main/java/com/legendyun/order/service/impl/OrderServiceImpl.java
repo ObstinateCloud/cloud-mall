@@ -6,6 +6,7 @@ import com.legendyun.order.dao.OrderDao;
 import com.legendyun.order.service.OrderService;
 import com.legendyun.order.service.feign.AccountFeignService;
 import com.legendyun.order.service.feign.StorageFeignService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,8 +30,7 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private AccountFeignService accountFeignService;
 
-
-
+    @GlobalTransactional
     public int createOrder(Order order) {
 
         //1. 创建订单 创建

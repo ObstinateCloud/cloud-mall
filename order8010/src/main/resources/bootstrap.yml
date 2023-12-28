@@ -14,12 +14,14 @@ spring:
       config:
         server-addr: 192.168.3.111:8848
         file-extension: yaml
-        namespace: 62396f7a-7489-4114-b04f-95eb3040e810  #namespace 只能用id
+        namespace: 8e45cc66-4360-40f7-947f-6471b4697dff  #namespace 只能用id
         group: SEATA
       discovery:
         server-addr: 192.168.3.111:8848
-        namespace: 62396f7a-7489-4114-b04f-95eb3040e810  #namespace 只能用id
-
+        namespace: 8e45cc66-4360-40f7-947f-6471b4697dff  #namespace 只能用id
+    alibaba:
+      seata:
+        tx-service-group: default_tx_group
 management:
   endpoints:
     web:

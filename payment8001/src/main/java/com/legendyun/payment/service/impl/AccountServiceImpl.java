@@ -4,6 +4,7 @@ import com.legendyun.common.entities.Account;
 import com.legendyun.common.entities.Storage;
 import com.legendyun.payment.dao.AccountDao;
 import com.legendyun.payment.service.AccountService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +23,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountDao accountDao;
 
     @Override
+    @GlobalTransactional
     public int debitAccount(Integer userId, Integer cost) {
 
         Account accountOld = accountDao.getAccountByUserId(userId);

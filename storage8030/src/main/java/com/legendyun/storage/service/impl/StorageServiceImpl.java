@@ -3,6 +3,7 @@ package com.legendyun.storage.service.impl;
 import com.legendyun.common.entities.Storage;
 import com.legendyun.storage.dao.StorageDao;
 import com.legendyun.storage.service.StorageService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,6 +22,7 @@ public class StorageServiceImpl implements StorageService {
     private StorageDao storageDao;
 
     @Override
+    @GlobalTransactional
     public int updateStorage(Integer productId, Integer productNum) {
 
         Storage storageOld = storageDao.getStorageByProductId(productId);
