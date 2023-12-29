@@ -21,11 +21,26 @@ spring:
         namespace: 8e45cc66-4360-40f7-947f-6471b4697dff  #namespace 只能用id
     alibaba:
       seata:
-        tx-service-group: default_tx_group
+       tx-service-group: default_tx_group
+
 management:
   endpoints:
     web:
       exposure:
         exclude: '*'
 
-
+#seata:
+#  enabled: true
+#  application-id: zjy-storage8030
+#  tx-service-group: default_tx_group
+#  service:
+#    vgroup-mapping:
+#      default_tx_group: default
+#  registry:
+#    type: nacos
+#    nacos:
+#      server-addr: 192.168.3.111:8848
+#      namespace: 8e45cc66-4360-40f7-947f-6471b4697dff
+#      group: SEATA
+#      application: seata-server
+#  enable-auto-data-source-proxy: false

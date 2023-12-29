@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
     @Resource
     private AccountFeignService accountFeignService;
 
-    @GlobalTransactional
+    @GlobalTransactional(rollbackFor = Exception.class)
     public int createOrder(Order order) {
 
         //1. 创建订单 创建
@@ -39,8 +39,14 @@ public class OrderServiceImpl implements OrderService {
         System.out.println("-----generateId:"+order.getId());
         //2. 减库存
         CommonResult<Integer> res2 = storageFeignService.updateStorageFeign(order.getProductId(), order.getCount());
+        if (res2.getCode()==201){
+            throw new RuntimeException(res2.getMessage());
+        }
         //3. 扣余额
         CommonResult<Integer> res3 = accountFeignService.debitAccount(order.getUserId(), order.getCount() * order.getMoney());
+        if (res3.getCode()==201){
+            throw new RuntimeException(res3.getMessage());
+        }
         //4. 更改订单状态 完成
 //        Order orderNew = orderDao.getOrderById(order.getId());
         int res4 =orderDao.updateOrderStatus(order.getId());

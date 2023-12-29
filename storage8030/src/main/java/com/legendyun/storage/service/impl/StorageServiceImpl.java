@@ -22,7 +22,6 @@ public class StorageServiceImpl implements StorageService {
     private StorageDao storageDao;
 
     @Override
-    @GlobalTransactional
     public int updateStorage(Integer productId, Integer productNum) {
 
         Storage storageOld = storageDao.getStorageByProductId(productId);

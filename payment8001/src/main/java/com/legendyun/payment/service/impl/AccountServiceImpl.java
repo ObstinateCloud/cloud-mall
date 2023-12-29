@@ -23,7 +23,6 @@ public class AccountServiceImpl implements AccountService {
     private AccountDao accountDao;
 
     @Override
-    @GlobalTransactional
     public int debitAccount(Integer userId, Integer cost) {
 
         Account accountOld = accountDao.getAccountByUserId(userId);
@@ -32,6 +31,7 @@ public class AccountServiceImpl implements AccountService {
             if (accountOld.getResidue()>=cost){
                 accountOld.setUsed(accountOld.getUsed()+cost);
                 accountOld.setResidue(accountOld.getTotal()-accountOld.getUsed());
+                accountOld.setUserId(userId);
                 int res = accountDao.debitAccount(accountOld);
                 return res;
             }
